@@ -1,0 +1,55 @@
+<!--
+The MIT License (MIT)
+Copyright (c) 2016 [MAIONE MIKY]
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">[[numero]]</div>
+      <h1>[[titolo]]</h1>
+      <p>[[contenuto]]</p>
+      <paper-button raised id="pulsantino">Cliccami</paper-button>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view1',
+      
+      properties: {        
+        titolo: String,
+        contenuto: String,        
+      },
+
+      listeners: {
+        'pulsantino.tap': 'pulsantino_premuto',        
+      },
+
+      ready: function(e) {
+        this.numero = 1;
+      },
+
+      pulsantino_premuto: function(e) {                
+        this.numero += 1;
+        this.scrivi('Stai al numero ' + this.numero);
+      },
+      
+      scrivi: function(testo) {
+        console.log(testo);
+      },
+
+    });
+  </script>
+</dom-module>
