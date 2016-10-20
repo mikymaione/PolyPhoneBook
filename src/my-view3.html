@@ -5,28 +5,44 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
-<link rel="import" href="shared-styles.html">
-
 <dom-module id="my-view3">
   <template>
-    <style include="shared-styles">
-      :host {
-        display: block;
-        padding: 10px;
+    <style>
+      #notes {        
+        @apply(--layout-wrap);
+      }
+
+      paper-card {
+        box-sizing: border-box;
+        max-width: 300px;        
+        margin: 4px;
+        flex: 0 0 auto;
       }
     </style>
 
-    <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+    <div id="notes">
+      <template is="dom-repeat" items="{{data}}">
+
+        <paper-card heading="[[item.name]]" image="[[item.image]]">
+          <div class="card-content">
+            [[item.phone]]
+            [[item.email]]
+          </div>
+          <div class="card-actions horizontal justified">
+            <paper-icon-button icon="communication:call"></paper-icon-button>
+            <paper-icon-button icon="icons:mail"></paper-icon-button>
+          </div>
+        </paper-card>
+
+      </template>
     </div>
+
+    <iron-ajax id="ajaxContatti" url="data/contacts.json" last-response="{{data}}" auto></iron-ajax>
   </template>
 
   <script>
     Polymer({
-      is: 'my-view3'
+      is: 'my-view3',      
     });
   </script>
 </dom-module>
