@@ -25,6 +25,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <script>
     Polymer({
       is: 'my-view3',
+
+      properties: {
+        ricerca: {
+          type: String,          
+          observer: '_ricerca'
+        },
+      },
+
+      _ricerca: function() {
+        
+      },
     });
   </script>
 </dom-module>
