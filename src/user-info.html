@@ -1,0 +1,77 @@
+<!--
+The MIT License (MIT)
+Copyright (c) 2016 [MAIONE MIKY]
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<dom-module id="user-info">
+  <template>
+    <style>
+      paper-card {
+        box-sizing: border-box;
+        max-width: 240px;
+        margin: 4px;
+        flex: 0 0 auto;
+
+        --paper-card-header-text: {
+          -webkit-text-stroke: 1px black;
+          color: white;
+          text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+        }
+      }
+
+      .contenuto {
+        font-size: small;        
+      }
+
+      .icoB {
+        color: blue;
+      }
+
+      .icoO {
+        color: orange;
+      }
+    </style>
+
+    <paper-card heading="[[nome]]" image="[[immagine]]">
+        <div class="card-content contenuto">
+            [[telefono]]
+            [[email]]
+        </div>
+        
+        <div class="card-actions horizontal justified">
+            <paper-icon-button id="bChiama" class="icoB" icon="communication:call" on-tap="bChiama_premuto"></paper-icon-button>
+            <paper-icon-button id="bMail" class="icoO" icon="icons:mail" on-tap="bMail_premuto"></paper-icon-button>
+        </div>
+    </paper-card>
+    
+  </template>
+
+  <script>
+    Polymer({
+      is: 'user-info',
+
+      properties: {        
+        nome: String,
+        immagine: String,        
+        telefono: String,
+        email: String,
+      },
+
+      bChiama_premuto: function() {        
+        console.log('Chiama: ' + this.telefono);
+      },
+
+      bMail_premuto: function() {        
+        console.log('Email: ' + this.email);
+      },
+
+    });
+  </script>
+</dom-module>
